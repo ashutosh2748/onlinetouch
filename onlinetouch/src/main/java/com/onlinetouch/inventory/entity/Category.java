@@ -1,9 +1,13 @@
 package com.onlinetouch.inventory.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public abstract class Category {
+	@Id
+	@GeneratedValue
 long id;
 String name;
 boolean hasproduct;

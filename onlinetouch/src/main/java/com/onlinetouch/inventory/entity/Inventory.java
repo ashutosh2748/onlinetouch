@@ -3,12 +3,14 @@ package com.onlinetouch.inventory.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Inventory {
 	@Id
+	@GeneratedValue
 	long id;
 	long quantity;
 	long lockedQuantity;

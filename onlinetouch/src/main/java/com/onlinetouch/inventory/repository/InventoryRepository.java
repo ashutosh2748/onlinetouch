@@ -6,11 +6,14 @@ import org.springframework.data.repository.query.Param;
 
 import com.onlinetouch.inventory.entity.Inventory;
 import com.onlinetouch.inventory.entity.Product;
+import com.onlinetouch.inventory.entity.WareHouse;
 
 public interface InventoryRepository extends CrudRepository<Inventory, Long>{
 	@Query("from Inventory i join product p where i.product=:product and i.quantity=:quantity limit 1")
 	Inventory findOne(@Param("product")Product product, @Param("quantity")long quantity);
 	//Query to Be verified
+	@Query("from Inventory i where i.product=:product and i.warehouse=:warehouse")
+	Inventory findOneByProductandwareHouse(@Param("product")Product product, @Param("warehouse")WareHouse warehouse);
 	
 	
 
