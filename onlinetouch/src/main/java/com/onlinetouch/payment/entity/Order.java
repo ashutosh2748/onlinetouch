@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.onlinetouch.users.entity.WebUser;
+
 @Entity
 public class Order {
 	@Id
