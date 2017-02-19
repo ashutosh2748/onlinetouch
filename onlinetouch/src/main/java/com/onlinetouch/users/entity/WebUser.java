@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
@@ -11,6 +14,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class WebUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,10 +29,11 @@ public abstract class WebUser {
 	@Email
 	private String email;
 	@NotEmpty @Min(6) @Max(30)
-	private String username;
+	private String userName;
 	@NotEmpty @Min(6) @Max(30)
 	private String password;
 	
+	@OneToOne
 	private Address address;
 	
 	WebUser(){
@@ -76,11 +81,11 @@ public abstract class WebUser {
 	}
 
 	public String getUsername() {
-		return username;
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {

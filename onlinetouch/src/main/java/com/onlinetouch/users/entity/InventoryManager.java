@@ -1,5 +1,8 @@
 package com.onlinetouch.users.entity;
 
-public class Inventory extends WebUser {
+import javax.persistence.Entity;
+
+@Entity
+public class InventoryManager extends WebUser {
 	
 }
