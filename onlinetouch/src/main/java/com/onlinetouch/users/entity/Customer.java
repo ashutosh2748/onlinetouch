@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Customer extends WebUser {
@@ -19,14 +18,7 @@ public class Customer extends WebUser {
 	)
 	private ArrayList<Address> shippingAddress = new ArrayList<Address>();
 	
-	@OneToOne(cascade= CascadeType.ALL)
-	private Address billingAddress;
-	
 	@OneToMany(cascade= CascadeType.ALL)
-	private Payment payment;
-	
-	
-	@OneToMany(mappedBy = "customer", cascade= CascadeType.ALL)
-	private ArrayList<Payment> payments = new ArrayList<Payment>();
+	private ArrayList<PaymentMethod> paymentMethods = new ArrayList<PaymentMethod>();
 	
 }

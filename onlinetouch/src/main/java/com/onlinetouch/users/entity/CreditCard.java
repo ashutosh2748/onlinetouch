@@ -1,5 +1,8 @@
 package com.onlinetouch.users.entity;
 
-public class CreditCard implements Payment {
+import javax.persistence.Entity;
+
+@Entity
+public class CreditCard extends Card {
 	
 }
