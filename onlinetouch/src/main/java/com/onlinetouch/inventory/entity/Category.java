@@ -1,5 +1,8 @@
 package com.onlinetouch.inventory.entity;
 
+import javax.persistence.Entity;
+
+@Entity
 public abstract class Category {
 long id;
 String name;

@@ -1,6 +1,13 @@
 package com.onlinetouch.inventory.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Brand {
+	@Id
+	@GeneratedValue
 long id;
 String name;
 public long getId() {
