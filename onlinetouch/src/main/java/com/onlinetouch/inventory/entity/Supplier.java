@@ -1,11 +1,15 @@
 package com.onlinetouch.inventory.entity;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+
+import com.onlinetouch.users.entity.Address;
 
 @Entity
 public class Supplier {
 long id;
 String name;
+@Embedded
 Address address;
 public long getId() {
 	return id;
