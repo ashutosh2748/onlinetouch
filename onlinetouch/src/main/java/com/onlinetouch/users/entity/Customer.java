@@ -1,6 +1,7 @@
 package com.onlinetouch.users.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,9 +17,9 @@ public class Customer extends WebUser {
 		joinColumns = { @JoinColumn(name = "webuser_id") },
 		inverseJoinColumns = { @JoinColumn(name = "address_id") }
 	)
-	private ArrayList<Address> shippingAddress = new ArrayList<Address>();
+	private List<Address> shippingAddress = new ArrayList<Address>();
 	
 	@OneToMany(cascade= CascadeType.ALL)
-	private ArrayList<PaymentMethod> paymentMethods = new ArrayList<PaymentMethod>();
+	private List<PaymentMethod> paymentMethods = new ArrayList<PaymentMethod>();
 	
 }
