@@ -4,6 +4,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import com.onlinetouch.users.entity.Address;
 
@@ -13,7 +14,7 @@ public class Supplier {
 	@GeneratedValue
 	long id;
 	String name;
-	
+	@OneToOne
 	Address address;
 
 	public long getId() {

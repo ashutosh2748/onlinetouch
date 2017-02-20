@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.onlinetouch.users.entity.Address;
 
@@ -15,7 +16,8 @@ public class WareHouse {
 	@Id
 	@GeneratedValue
 	long id;
-	@Embedded
+	//@Embedded
+	@OneToOne
 	Address address;
 	@OneToMany
 	List<Inventory> inventories;

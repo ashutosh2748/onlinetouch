@@ -15,6 +15,12 @@ public class Inventory {
 	long quantity;
 	long lockedQuantity;
 	long orderedQuantity;
+	Date entryDate;
+	@OneToOne
+	Product product;
+	@OneToOne
+	WareHouse warehouse;
+	
 	public long getLockedQuantity() {
 		return lockedQuantity;
 	}
@@ -31,11 +37,7 @@ public class Inventory {
 		this.orderedQuantity = orderedQuantity;
 	}
 
-	Date entryDate;
-	@OneToOne
-	Product product;
-	@OneToOne
-	WareHouse warehouse;
+	
 
 	public long getQuantity() {
 		return quantity;

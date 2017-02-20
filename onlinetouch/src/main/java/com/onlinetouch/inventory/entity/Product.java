@@ -18,11 +18,25 @@ public class Product {
 	CategoryLeaf categoryleaf;
 	@OneToOne
 	Brand brand;
-	List<Supplier> suppliers;
+	
+	//List<Supplier> suppliers;
 	BigDecimal sellprice;
 	String title;
 	String description;
-	List<Inventory> inventories;
+	//List<Inventory> inventories;
+	String imgUrl;
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	public void setCategoryleaf(CategoryLeaf categoryleaf) {
+		this.categoryleaf = categoryleaf;
+	}
 
 	public long getId() {
 		return id;
@@ -48,13 +62,13 @@ public class Product {
 		this.brand = brand;
 	}
 
-	public List<Supplier> getList() {
+	/*public List<Supplier> getList() {
 		return suppliers;
 	}
 
 	public void setList(List<Supplier> list) {
 		suppliers = list;
-	}
+	}*/
 
 	public BigDecimal getSellprice() {
 		return sellprice;

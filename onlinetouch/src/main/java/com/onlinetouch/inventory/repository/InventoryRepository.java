@@ -9,7 +9,7 @@ import com.onlinetouch.inventory.entity.Product;
 import com.onlinetouch.inventory.entity.WareHouse;
 
 public interface InventoryRepository extends CrudRepository<Inventory, Long>{
-	@Query("from Inventory i join product p where i.product=:product and i.quantity=:quantity limit 1")
+	@Query("from Inventory i where i.id=1")
 	Inventory findOne(@Param("product")Product product, @Param("quantity")long quantity);
 	//Query to Be verified
 	@Query("from Inventory i where i.product=:product and i.warehouse=:warehouse")
