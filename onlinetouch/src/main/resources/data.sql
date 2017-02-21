@@ -1,4 +1,5 @@
 
+
 INSERT INTO address (`id`, `city`, `state`, `street`, `zip`) VALUES (1, 'South Jakaylaburgh', 'NorthCarolina', '60615 Althea Creek Apt. 367', '');
 INSERT INTO address (`id`, `city`, `state`, `street`, `zip`) VALUES (2, 'Lake Arlie', 'NorthDakota', '1105 Roberto Fords Suite 237', '');
 INSERT INTO address (`id`, `city`, `state`, `street`, `zip`) VALUES (3, 'Mantemouth', 'District of Columbia', '701 Ara Fort', '');
@@ -21,3 +22,7 @@ INSERT INTO address (`id`, `city`, `state`, `street`, `zip`) VALUES (19, 'Kerluk
 INSERT INTO address (`id`, `city`, `state`, `street`, `zip`) VALUES (20, 'Hodkiewiczbury', 'Arkansas', '438 Corine Lake Apt. 002', '');
 
 
+
+INSERT INTO `cs544`.`web_user` (`id`, `email`, `enabled`, `first_name`, `last_name`, `middle_name`, `password`, `user_name`) VALUES ('1', 'sdf', '1', 'sdf', 'sdf', 'sdf', '$2a$10$4eqIF5s/ewJwHK1p8lqlFOEm2QIA0S8g6./Lok.pQxqcxaBZYChRm', 'abc125');
+INSERT INTO `cs544`.`user_roles` (`user_role_id`, `role`) VALUES ('1', 'ROLE_ADMIN');
+INSERT INTO `cs544`.`web_user_roles` (`user_id`, `role_id`) VALUES ('1', '1');

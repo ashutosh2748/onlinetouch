@@ -3,12 +3,15 @@ package com.onlinetouch.payment.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.onlinetouch.payment.entity.ShoppingCart;
 import com.onlinetouch.payment.repository.ShoppingCartRepository;
 import com.onlinetouch.payment.service.ShoppingCartService;
 
+@Service
+@Transactional
 public class ShoppingCartServiceImpl implements ShoppingCartService{
 
 	@Autowired
