@@ -9,16 +9,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.onlinetouch.users.entity.WebUser;
 
 @Entity
+@Table(name = "cutomer_order")
 public class Order {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 	private Date orderDate;
-	private Date shipDate;
+	private Date shippingDate;
 	@ManyToOne(cascade= CascadeType.ALL)
 	private WebUser user;
 	@OneToOne(cascade= CascadeType.ALL)
@@ -35,11 +37,11 @@ public class Order {
 	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
-	public Date getShipDate() {
-		return shipDate;
+	public Date getShippingDate() {
+		return shippingDate;
 	}
-	public void setShipDate(Date shipDate) {
-		this.shipDate = shipDate;
+	public void setShippingDate(Date shippingDate) {
+		this.shippingDate = shippingDate;
 	}
 	public WebUser getUser() {
 		return user;
