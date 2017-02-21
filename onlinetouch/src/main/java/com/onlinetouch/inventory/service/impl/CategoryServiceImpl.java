@@ -1,30 +1,41 @@
 package com.onlinetouch.inventory.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.onlinetouch.inventory.entity.Brand;
-import com.onlinetouch.inventory.entity.CategoryLeaf;
-import com.onlinetouch.inventory.entity.Product;
-import com.onlinetouch.inventory.repository.BrandRepository;
-import com.onlinetouch.inventory.service.BrandService;
+import com.onlinetouch.inventory.entity.Category;
+import com.onlinetouch.inventory.repository.CategoryRepository;
 import com.onlinetouch.inventory.service.CategoryService;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 	@Autowired
-	BrandRepository brandrepo;
+	CategoryRepository categoryrepo;
 
+		
 	@Override
-	public CategoryLeaf getCategoryLeaf(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+	public Category getRootCategory() {
+		return categoryrepo.findOne((long)1);
 	}
 
 	@Override
-	public Product getProduct(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Category> getChildCategory(long categoryId) {
+		Category category=getCategory(categoryId);
+		return category.getChildCategories();
 	}
-
+	
+	@Override
+	public Category getParentCategory(long categoryId) {
+		
+		Category category=getCategory(categoryId);
+		if(categoryId==1) return category;
+		return category.getParent();
+	}
+	
+	private Category getCategory(long id) {
+		
+		return categoryrepo.findOne(id);
+	}
 	
 }

@@ -1,10 +1,15 @@
 package com.onlinetouch.inventory.service;
 
-import com.onlinetouch.inventory.entity.CategoryLeaf;
-import com.onlinetouch.inventory.entity.Product;
+import java.util.List;
+
+import com.onlinetouch.inventory.entity.Category;
+
 
 public interface CategoryService {
-	public CategoryLeaf getCategoryLeaf(Product product);
+	
+	public Category getRootCategory();
 
-	public Product getProduct(Long id);
+	public List<Category> getChildCategory(long categoryId);
+
+	public Category getParentCategory(long categoryId);
 }
