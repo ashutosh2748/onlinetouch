@@ -1,7 +1,5 @@
 package com.onlinetouch.users.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,18 +13,16 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class WebUser {
+public class WebUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -43,7 +39,7 @@ public abstract class WebUser {
 	@NotEmpty @Min(6) @Max(20)
 	private String userName;
 	@NotEmpty(message="Password is Requered")
-	@Size(min=6, max=20)
+	//@Size(min=60, max=60)
 	private String password;
 	
 	private int enabled = 1;
@@ -97,14 +93,6 @@ public abstract class WebUser {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getUsername() {
-		return userName;
-	}
-
-	public void setUsername(String userName) {
-		this.userName = userName;
 	}
 
 	public String getPassword() {

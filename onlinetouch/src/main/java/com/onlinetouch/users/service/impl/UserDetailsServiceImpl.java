@@ -9,12 +9,15 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.onlinetouch.users.entity.UserRoles;
 import com.onlinetouch.users.entity.WebUser;
 import com.onlinetouch.users.repository.WebUserRepository;
 
 //CustomUserDetailsService
+@Service("userDetailsServiceImpl")
 public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Autowired
@@ -24,12 +27,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try{
 			WebUser user = webUserRepository.findByUserName(username);
+			
+			System.out.println("I am here 22...  "+username);
+			
 			if(user == null){
+				System.out.println("Pass: "+user.getPassword());
+				System.out.println("username: "+user.getUserName());
 				return null;
 				
 			}
-			return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthorities(user));
+			System.out.println("Pass: "+user.getPassword());
+			System.out.println("username: "+user.getUserName());
+			return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), getAuthorities(user));
 		}catch (Exception e){
+			System.out.println("test: "+e.getMessage());
             throw new UsernameNotFoundException("User not found");
         }
 	}
