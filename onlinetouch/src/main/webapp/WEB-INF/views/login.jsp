@@ -8,7 +8,7 @@
         <title>HelloWorld Login page</title>
         <link href="<c:url value='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' />" rel="stylesheet" ></link>
         <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
-    </head>
+    </head> 
  
     <body>
         <div id="mainWrapper">
