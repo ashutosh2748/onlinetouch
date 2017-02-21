@@ -2,7 +2,7 @@
   "name": "onlinetouch",
   "version": "1.0.0",
   "description": "online shopping application",
-  "main": "index.html",
+  "main": "index.jsp",
   "moduleType": [],
   "keywords": [
     "onlinetouch",
