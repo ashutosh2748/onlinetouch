@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -19,27 +21,22 @@ public abstract class Category {
 	long id;
 	String name;
 	boolean hasproduct;
-	@ManyToOne
-	Category parent;
+	//@ManyToOne
+	//@JoinTable(name="childcategories")
+	//Category parent;
 	
-	public Category getParent() {
+	
+
+	
+
+	/*public Category getParent() {
 		return parent;
 	}
 
 	public void setParent(Category parent) {
 		this.parent = parent;
-	}
-
-	@OneToMany(mappedBy="parent",fetch=FetchType.EAGER)
-	List<Category> childCategories;
-
-	public List<Category> getChildCategories() {
-		return childCategories;
-	}
-
-	public void setChildCategories(List<Category> childCategories) {
-		this.childCategories = childCategories;
-	}
+	}*/
+	public abstract List<Category> getChildCategories();
 
 	public long getId() {
 		return id;
