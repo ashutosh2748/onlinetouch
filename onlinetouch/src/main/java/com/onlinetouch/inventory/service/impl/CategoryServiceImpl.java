@@ -30,7 +30,7 @@ public class CategoryServiceImpl implements CategoryService {
 		
 		Category category=getCategory(categoryId);
 		if(categoryId==1) return category;
-		return category.getParent();
+		return category;
 	}
 	
 	private Category getCategory(long id) {

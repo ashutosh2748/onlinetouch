@@ -24,5 +24,10 @@ public class CategoryLeaf extends Category {
 	public void removeProduct(Product product) {
 		products.remove(product);
 	}
+	@Override
+	public List<Category> getChildCategories() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

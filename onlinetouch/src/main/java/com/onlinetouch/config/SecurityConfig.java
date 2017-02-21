@@ -53,16 +53,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
+			.antMatchers("/", "/home", "/welcome").permitAll()
 			.antMatchers("/login").anonymous()
 		.and()
 			.formLogin()
-			//.loginPage("/login")
-			//.failureUrl("/login?error")
+			.loginPage("/login")
+			.failureUrl("/login?error")
 		.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/login?logout")
 		.and()
-			.exceptionHandling().accessDeniedPage("/403")
+			.exceptionHandling().accessDeniedPage("/Access_Denied")
 		.and()
 			.csrf();
 	}
