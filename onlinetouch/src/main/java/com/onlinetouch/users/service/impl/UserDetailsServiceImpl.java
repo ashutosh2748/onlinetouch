@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.onlinetouch.users.entity.UserRoles;
 import com.onlinetouch.users.entity.WebUser;
@@ -28,11 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		try{
 			WebUser user = webUserRepository.findByUserName(username);
 			
-			System.out.println("I am here 22...  "+username);
-			
 			if(user == null){
-				System.out.println("Pass: "+user.getPassword());
-				System.out.println("username: "+user.getUserName());
 				return null;
 				
 			}
