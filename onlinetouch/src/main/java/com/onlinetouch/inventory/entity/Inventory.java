@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Inventory {
 	@Id
@@ -17,8 +19,10 @@ public class Inventory {
 	long orderedQuantity;
 	Date entryDate;
 	@OneToOne
+	@JsonBackReference
 	Product product;
 	@OneToOne
+	@JsonBackReference
 	WareHouse warehouse;
 	
 	public long getLockedQuantity() {

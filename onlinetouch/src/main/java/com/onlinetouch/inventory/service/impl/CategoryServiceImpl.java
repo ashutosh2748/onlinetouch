@@ -2,6 +2,8 @@ package com.onlinetouch.inventory.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import com.onlinetouch.inventory.entity.Category;
 import com.onlinetouch.inventory.repository.CategoryRepository;
 import com.onlinetouch.inventory.service.CategoryService;
 @Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	CategoryRepository categoryrepo;

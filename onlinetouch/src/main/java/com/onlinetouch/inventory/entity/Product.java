@@ -11,13 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Product {
 	@Id
 	@GeneratedValue
 	long id;
 	@OneToOne
-	CategoryLeaf categoryleaf;
+	@JsonBackReference
+	Category categoryleaf;
 	@OneToOne
 	Brand brand;
 	
@@ -26,6 +30,7 @@ public class Product {
 	String title;
 	String description;
 	@OneToMany(mappedBy="product")
+    @JsonManagedReference
 	List<Inventory> inventories;
 	String imgUrl;
 
@@ -57,11 +62,11 @@ public class Product {
 		this.id = id;
 	}
 
-	public CategoryLeaf getCategoryleaf() {
+	public Category getCategoryleaf() {
 		return categoryleaf;
 	}
 
-	public void setCategoryLeaf(CategoryLeaf categoryleaf) {
+	public void setCategoryLeaf(Category categoryleaf) {
 		this.categoryleaf = categoryleaf;
 	}
 

@@ -66,6 +66,19 @@ INSERT INTO brand (`id`, `name`) VALUES (19, 'fugit');
 INSERT INTO brand (`id`, `name`) VALUES (20, 'ipsum');
 
 
+INSERT INTO `cs544`.`ware_house` (`id`, `address_id`) VALUES ('1', '1');
+INSERT INTO `cs544`.`ware_house` (`id`, `address_id`) VALUES ('2', '3');
+
+INSERT INTO `cs544`.`inventory` (`id`, `entry_date`, `locked_quantity`, `ordered_quantity`, `quantity`, `product_id`, `warehouse_id`) VALUES ('1', '2012-12-31 11:30:45', '1', '2', '100', '1', '1');
+INSERT INTO `cs544`.`inventory` (`id`, `entry_date`, `locked_quantity`, `ordered_quantity`, `quantity`, `product_id`, `warehouse_id`) VALUES ('3', '2012-12-31 11:30:45', '2', '12', '233', '10', '1');
+
+
+INSERT INTO `cs544`.`ware_house_inventories` (`ware_house_id`, `inventories_id`) VALUES ('1', '1');
+INSERT INTO `cs544`.`ware_house_inventories` (`ware_house_id`, `inventories_id`) VALUES ('2', '2');
+INSERT INTO `cs544`.`ware_house_inventories` (`ware_house_id`, `inventories_id`) VALUES ('1', '3');
+
+
+
 
 INSERT INTO product (`id`, `description`, `img_url`, `sellprice`, `title`, `brand_id`, `categoryleaf_id`) VALUES (1, 'Reprehenderit repudiandae explicabo enim fugiat dolores enim. Aperiam quas ipsum saepe non. Temporibus ut nemo quod. Porro facilis eum cumque repudiandae.', 'http://lorempixel.com/400/300/sports/', '0.00', 'Ducimus itaque et excepturi esse.', 14, 3);
 INSERT INTO product (`id`, `description`, `img_url`, `sellprice`, `title`, `brand_id`, `categoryleaf_id`) VALUES (2, 'Culpa maiores nihil a id mollitia quisquam. Ea dignissimos quo nemo minima et. Totam sequi illum sequi voluptas.', 'http://lorempixel.com/400/300/sports/', '2685453.00', 'Neque eligendi error possimus in dolorem.', 16, 17);

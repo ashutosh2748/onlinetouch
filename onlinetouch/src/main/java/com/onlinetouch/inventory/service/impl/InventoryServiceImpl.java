@@ -3,6 +3,7 @@ package com.onlinetouch.inventory.service.impl;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.onlinetouch.inventory.entity.Inventory;
 import com.onlinetouch.inventory.entity.Product;
@@ -11,6 +12,7 @@ import com.onlinetouch.inventory.repository.InventoryRepository;
 import com.onlinetouch.inventory.repository.ProductRepository;
 import com.onlinetouch.inventory.repository.WareHouseRepository;
 import com.onlinetouch.inventory.service.InventoryService;
+@Service
 @Transactional
 public class InventoryServiceImpl implements InventoryService {
 	@Autowired

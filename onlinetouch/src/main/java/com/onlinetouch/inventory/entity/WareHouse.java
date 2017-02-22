@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.onlinetouch.users.entity.Address;
 
 @Entity
@@ -20,6 +21,7 @@ public class WareHouse {
 	@OneToOne
 	Address address;
 	@OneToMany
+	@JsonManagedReference
 	List<Inventory> inventories;
 
 	public long getId() {

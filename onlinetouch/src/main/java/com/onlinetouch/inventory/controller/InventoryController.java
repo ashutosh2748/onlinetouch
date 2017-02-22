@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.onlinetouch.inventory.entity.Category;
 import com.onlinetouch.inventory.service.CategoryService;
 
-
+@RestController
 @RequestMapping({"/inventory"})
 public class InventoryController {
 	@Autowired

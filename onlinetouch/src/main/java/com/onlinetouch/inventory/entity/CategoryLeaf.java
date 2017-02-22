@@ -5,10 +5,13 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class CategoryLeaf extends Category {
-	//@OneToMany(mappedBy="categoryleaf")
-	//List<Product> products;
+	@OneToMany(mappedBy="categoryleaf")
+	@JsonManagedReference
+	List<Product> products;
 	CategoryLeaf(){
 		hasproduct=true;
 	}
