@@ -8,8 +8,8 @@ import com.onlinetouch.inventory.entity.Category;
 import com.onlinetouch.inventory.service.CategoryService;
 
 @RestController
-@RequestMapping({"/Inventory"})
-public class InventoryController {
+@RequestMapping({"/Product"})
+public class ProductController {
 	@Autowired
 	CategoryService categoryservice;
 	@RequestMapping("")
@@ -17,8 +17,6 @@ public class InventoryController {
 		System.out.println("test");
 		Category category=categoryservice.getRootCategory();
 		//System.out.println(category);
-		StringBuilder builder=new StringBuilder();
-		
         return category.getName();
     }
 	@RequestMapping("/i")

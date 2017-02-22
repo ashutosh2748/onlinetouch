@@ -1,5 +1,9 @@
 package com.onlinetouch.inventory.service;
 
-public interface ProductService {
+import java.util.List;
 
+import com.onlinetouch.inventory.entity.Product;
+
+public interface ProductService {
+public List<Product> getProductsByCategory(long categoryId);
 }

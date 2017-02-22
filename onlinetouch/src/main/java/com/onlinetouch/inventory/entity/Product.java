@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -23,8 +25,17 @@ public class Product {
 	BigDecimal sellprice;
 	String title;
 	String description;
-	//List<Inventory> inventories;
+	@OneToMany(mappedBy="product")
+	List<Inventory> inventories;
 	String imgUrl;
+
+	public List<Inventory> getInventories() {
+		return inventories;
+	}
+
+	public void setInventories(List<Inventory> inventories) {
+		this.inventories = inventories;
+	}
 
 	public String getImgUrl() {
 		return imgUrl;

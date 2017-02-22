@@ -5,11 +5,11 @@ import com.onlinetouch.inventory.entity.WareHouse;
 
 public interface InventoryService {
 	
-	public WareHouse lockQuantity(Product product, long quantity);
+	public WareHouse lockQuantity(long productId, long quantity);
 
-	public long getAvailableQuantity(Product product);
+	public long getAvailableQuantity(long productId);
 
-	public void unlockQuantity(Product product, long quantity, WareHouse warehouse);
+	public void unlockQuantity(long productId, long quantity, long wareHouseId);
 
-	public void addProduct(Product product, WareHouse warehouse, long count);
+	public void addProduct(long productId, long quantity,long warehouseId);
 }
