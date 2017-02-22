@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.onlinetouch.users.service.impl.UserDetailsServiceImpl;
+import com.onlinetouch.users.service.impl.WebUserServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -23,8 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	//@Autowired private DataSource dataSource;
 	//@Autowired private WebUserRepository webUserRepository;
 	
-	@Qualifier("userDetailsServiceImpl")
-	@Autowired UserDetailsService userDetailsService;
+	@Autowired
+	@Qualifier("userServiceImpl")// by name
+	UserDetailsService userDetailsService;
 	
 	@Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
@@ -47,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public UserDetailsService userDetailsServiceBean() throws Exception {
-		return new UserDetailsServiceImpl();
+		return new WebUserServiceImpl();//UserDetailsServiceImpl();
 	}
 	
 	@Override
