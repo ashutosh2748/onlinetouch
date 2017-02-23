@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" ng-app="onlinetouch">
 	<head>
@@ -9,12 +9,7 @@
 		<link
 			href="<c:url value='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' />"
 			rel="stylesheet"></link>
-		<link
-			href="<c:url value='../bower_components/bootstrap/dist/css/bootstrap.min.css' />"
-			rel="stylesheet">
-		<link
-			href="<c:url value='../bower_components/bootstrap/dist/css/bootstrap-theme.min.css' />"
-			rel="stylesheet">
+		
 		<link
 			href="<c:url value='../bower_components/font-awesome/css/font-awesome.min.css' />"
 			rel="stylesheet">
@@ -32,8 +27,8 @@
 		<script src="../bower_components/angular/angular.min.js"></script>
 		<script
 			src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-		<script src="scripts/controllers.js"></script>
-		<script src="scripts/app.js"></script>
-		<script src="scripts/services.js"></script>
+		<script src="../static/scripts/controllers.js"></script>
+		<script src="../static/scripts/app.js"></script>
+		<script src="../static/scripts/services.js"></script>
 	</body>
 </html>

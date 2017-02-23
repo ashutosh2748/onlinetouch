@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.onlinetouch.security.MyAuthenticationSuccessHandler;
 import com.onlinetouch.users.service.impl.WebUserServiceImpl;
 
 @Configuration
@@ -26,6 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	@Qualifier("userServiceImpl")// by name
 	UserDetailsService userDetailsService;
+	
+	@Autowired
+	MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
 	
 	@Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
@@ -46,6 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return authenticationProvider;
     }
 	
+	@Bean
+	public MyAuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+		return new MyAuthenticationSuccessHandler();
+	}
+	
 	@Override
 	public UserDetailsService userDetailsServiceBean() throws Exception {
 		return new WebUserServiceImpl();//UserDetailsServiceImpl();
@@ -55,10 +64,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
 			.antMatchers("/", "/home", "/welcome").permitAll()
-			.antMatchers("/login").anonymous()
+			.antMatchers("/login", "/admin", "/inventory", "/customer").anonymous()
+			.antMatchers("/admin", "/admin/**").access("hasRole('ROLE_ADMIN')")
+			.antMatchers("/inventory", "/inventory/**").access("hasRole('ROLE_INVENTORY_MANAGER')")
+			.antMatchers("/customer", "/customer/**").access("hasRole('ROLE_CUSTOMER')")
 		.and()
 			.formLogin()
 			.loginPage("/login")
+			.successHandler(myAuthenticationSuccessHandler)
 			.failureUrl("/login?error")
 		.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

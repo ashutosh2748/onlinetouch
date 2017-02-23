@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>OnelineTouch Login page</title>
+        <title>OnelineTouch Login</title>
         <link href="<c:url value='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' />" rel="stylesheet" type="text/css"></link>
         <link href="<c:url value='/static/styles/app.css' />" rel="stylesheet" type="text/css"></link>
         <link href="<c:url value='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css' />" rel="stylesheet" type="text/css"></link>

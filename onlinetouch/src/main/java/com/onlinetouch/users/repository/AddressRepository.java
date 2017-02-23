@@ -7,5 +7,5 @@ import com.onlinetouch.users.entity.Address;
 
 @Repository
 public interface AddressRepository extends CrudRepository<Address, Long> {
-
+	
 }
