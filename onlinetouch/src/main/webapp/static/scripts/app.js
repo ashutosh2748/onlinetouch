@@ -55,12 +55,12 @@ angular.module('onlineTouch', ['ui.router','abc'])
             })
 
             // route for the cartsdetail page
-            .state('app.dishdetails', {
+            .state('app.productDetails', {
                 url: 'menu/:id',
                 views: {
                     'content@': {
-                        templateUrl : 'views/dishdetail.html',
-                        controller  : 'DishDetailController'
+                        templateUrl : 'views/productDetail.html',
+                        controller  : 'ProductController'
                    }
                 }
             });
