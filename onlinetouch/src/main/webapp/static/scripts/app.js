@@ -1,5 +1,5 @@
 'use strict';
-angular.module('onlineTouch', ['ui.router','abc'])
+angular.module('onlineTouch', ['ui.router'])
 .config(function($stateProvider, $urlRouterProvider) {
          $stateProvider
         
@@ -8,14 +8,17 @@ angular.module('onlineTouch', ['ui.router','abc'])
                 url:'/',
                 views: {
                     'header': {
-                        templateUrl : '../WEB-INF/views/header.html',
+                        templateUrl : '../template/public/header.html',
+                    },
+                    'banner': {
+                        templateUrl : '../template/public/banner.html',
                     },
                     'content': {
-                        templateUrl : '../WEB-INF/views/home.html',
+                        templateUrl : '../template/public/content.html',
                         controller  : 'IndexController'
                     },
                     'footer': {
-                        templateUrl : '../WEB-INF/views/footer.html',
+                        templateUrl : '../template/public/footer.html',
                     }
                 }
 
