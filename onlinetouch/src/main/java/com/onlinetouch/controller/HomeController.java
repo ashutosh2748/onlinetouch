@@ -45,6 +45,15 @@ public class HomeController {
 			return "login";
 	}
 	
+	@RequestMapping(value = "/inventory", method = RequestMethod.GET)
+	public String inventoryDashboard(Principal principal){
+		if(principal != null){
+			//if(principal.getName() != null)
+			return "inventory/index";
+		}else
+			return "login";
+	}
+	
 //	private String getPrincipal(){
 //        String userName = null;
 //        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
