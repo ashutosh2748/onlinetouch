@@ -10,9 +10,6 @@ angular.module('onlineTouch', ['ui.router'])
                     'header': {
                         templateUrl : '../template/public/header.html',
                     },
-                    'banner': {
-                        templateUrl : '../template/public/banner.html',
-                    },
                     'content': {
                         templateUrl : '../template/public/content.html',
                         controller  : 'IndexController'
