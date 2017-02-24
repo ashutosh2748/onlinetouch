@@ -1,5 +1,5 @@
 'use strict';
-angular.module('onlineTouch', ['ui.router'])
+angular.module('onlineTouch', ['ui.router','ngResource'])
 .config(function($stateProvider, $urlRouterProvider) {
          $stateProvider
         

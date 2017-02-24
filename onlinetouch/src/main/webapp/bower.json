@@ -10,8 +10,10 @@
     "online"
   ],
   "authors": [
-    "Manish Karki"
-, "Ashutosh Ghimire", "Krishna Bhatt"  ],
+    "Manish Karki",
+    "Ashutosh Ghimire",
+    "Krishna Bhatt"
+  ],
   "license": "OT",
   "homepage": "",
   "ignore": [
@@ -26,6 +28,7 @@
     "font-awesome": "~4.4.0",
     "angular": "~1.4.7",
     "angular-route": "^1.5.9",
-    "angular-ui-router": "^0.3.2"
+    "angular-ui-router": "^0.3.2",
+    "angular-resource": "^1.6.2"
   }
 }
