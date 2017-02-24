@@ -65,9 +65,10 @@
 		<title>Online Touch</title>
 	</head>
 	<body>
-		<div ui-view="header"></div>
+	<!-- dynamic header, content and footer -->
+		<div ng-include="'../template/public/header.html'"></div>
 		<div ui-view="content"></div>
-		<div ui-view="footer"></div>
+		<div ng-include="'../template/public/footer.html'"></div>
 	
 	
 		<!--search jQuery-->

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('onlineTouch')
+angular.module('a',[])
 
         .controller('ProductController', ['$scope', 'productFactory',
                                   function($scope, productFactory) {
@@ -116,7 +116,7 @@ angular.module('onlineTouch')
 
 ;
 
-angular.module('confusionApp')
+angular.module('b',[])
   .controller('AboutController', ['$scope', '$stateParams', 'corporateFactory', function($scope, $stateParams, corporateFactory) {
 
       // obtained from the server, and error condition should be handled.
@@ -135,11 +135,15 @@ angular.module('confusionApp')
   }])
 
 
-  .controller('IndexController', ['$scope', 'productFactory', 'corporateFactory', function ($scope, productFactory, corporateFactory) {
+  .controller('IndexController', ['$scope', function ($scope) {
+	  
 
-        $scope.showproduct = false;
-        $scope.message="Loading ...";
-        $scope.product = productFactory.getproducts().get({id:0})
+//        $scope.showproduct = false;
+//        $scope.message="Loading ...";
+//        $scope.clicked = function(){
+//            window.location = "#/register.html";
+//      }
+       /* $scope.product = productFactory.getproducts().get({id:0})
         .$promise.then(
             function(response){
                 $scope.product = response;
@@ -177,6 +181,6 @@ angular.module('confusionApp')
                           $scope.leaderErrMsg = "Error: "+response.status + " " + response.statusText;
                       }
           );
-
+*/
   }])
 ;

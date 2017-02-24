@@ -1,5 +1,5 @@
 'use strict';
-angular.module('onlineTouch', ['ui.router','ngResource'])
+angular.module('onlineTouch', ['ui.router', 'ngResource', 'b'])
 .config(function($stateProvider, $urlRouterProvider) {
          $stateProvider
         
@@ -7,16 +7,16 @@ angular.module('onlineTouch', ['ui.router','ngResource'])
             .state('app', {
                 url:'/',
                 views: {
-                    'header': {
-                        templateUrl : '../template/public/header.html',
-                    },
+//                    'header': {
+//                        templateUrl : '../template/public/header.html',
+//                    },
                     'content': {
                         templateUrl : '../template/public/content.html',
                         controller  : 'IndexController'
                     },
-                    'footer': {
-                        templateUrl : '../template/public/footer.html',
-                    }
+//                    'footer': {
+//                        templateUrl : '../template/public/footer.html',
+//                    }
                 }
 
             })
@@ -30,6 +30,24 @@ angular.module('onlineTouch', ['ui.router','ngResource'])
                         controller  : 'AboutController'                  
                     }
                 }
+            })
+            
+            .state('register', {
+                views: {
+                    'content@': {
+                        templateUrl : '../template/public/register.html',
+                        controller  : 'IndexController'                  
+                    }
+                }
+            })
+            
+            .state('login', {
+            	views:{
+            		'content@': {
+            			templateUrl: '../template/public/login.html',
+            			controller : 'IndexController'
+            		}
+            	}
             })
         
             // route for the contactus page

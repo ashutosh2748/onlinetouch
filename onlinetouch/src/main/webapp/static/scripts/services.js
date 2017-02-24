@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('onlineTouch')
+var test = angular.module('onlineTouch')
         .constant("baseURL","http://localhost:8080/")
         .service('productFactory', ['$resource', 'baseURL', function($resource,baseURL) {
 
