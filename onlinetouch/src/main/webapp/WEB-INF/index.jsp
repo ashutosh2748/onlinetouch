@@ -61,21 +61,11 @@
 		<!--//end-smooth-scrolling-->
 		
 
-		<%-- <link
-			href="<c:url value='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' />"
-			rel="stylesheet"></link>
 		
-		<link
-			href="<c:url value='../bower_components/font-awesome/css/font-awesome.min.css' />"
-			rel="stylesheet">
-		<link href="<c:url value='../static/styles/bootstrap-social.css'/>"
-			rel="stylesheet">
-		<link href="<c:url value='../static/styles/app.css' />" rel="stylesheet" /> --%>
 		<title>Online Touch</title>
 	</head>
 	<body>
 		<div ui-view="header"></div>
-		<div ui-view="banner"></div>
 		<div ui-view="content"></div>
 		<div ui-view="footer"></div>
 	
