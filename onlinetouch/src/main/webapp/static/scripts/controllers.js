@@ -47,7 +47,7 @@ angular.module('a',[])
 
         .controller('ContactController', ['$scope', function($scope) {
 
-            $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
+            $scope.login = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
 
             var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
 
@@ -56,24 +56,24 @@ angular.module('a',[])
 
         }])
 
-        .controller('FeedbackController',
-              ['$scope', 'feedbackFactory', function($scope, feedbackFactory) {
+        .controller('loginController',
+              ['$scope', 'loginFactory', function($scope, loginFactory) {
 
-            $scope.sendFeedback = function() {
+            $scope.sendlogin = function() {
 
-                //console.log($scope.feedback);
+                //console.log($scope.login);
 
-                if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
+                if ($scope.login.agree && ($scope.login.mychannel == "")) {
                     $scope.invalidChannelSelection = true;
                 }
                 else {
                     $scope.invalidChannelSelection = false;
                     // using the $resource save method.
-                    feedbackFactory.sendFeedback().save($scope.feedback);
+                    loginFactory.sendlogin().save($scope.login);
 
-                    $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
-                    $scope.feedback.mychannel=""; 
-                    $scope.feedbackForm.$setPristine();
+                    $scope.login = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
+                    $scope.login.mychannel=""; 
+                    $scope.loginForm.$setPristine();
                 }
             };
         }])
@@ -133,7 +133,47 @@ angular.module('b',[])
 
 
   }])
+  
+  .controller('registerSigninController', ['$scope','$rootScope','$http','$location', function ($scope,$rootScope, $http, $location) {
+	  var authenticate = function(credentials, callback) {
 
+		    var headers = credentials ? {authorization : "Basic "
+		        + btoa(credentials.username + ":" + credentials.password)
+		    } : {};
+
+		    $http.get('user', {headers : headers}).then(function(response) {
+		      if (response.data.name) {
+		        $rootScope.authenticated = true;
+		      } else {
+		        $rootScope.authenticated = false;
+		      }
+		      callback && callback();
+		    }, function() {
+		      $rootScope.authenticated = false;
+		      callback && callback();
+		    });
+
+		  }
+
+		  authenticate();
+		  $scope.credentials = {};
+
+		  $scope.credentials = {};
+		  $scope.login = function() {
+		      authenticate($scope.credentials, function() {
+		        if ($rootScope.authenticated) {
+		          $location.path("/");
+		          $scope.error = false;
+		        } else {
+		          $location.path("/login");
+		          $scope.error = true;
+		        }
+		      });
+		  };
+  }])
+
+  
+ 
 
   .controller('IndexController', ['$scope', function ($scope) {
 	  

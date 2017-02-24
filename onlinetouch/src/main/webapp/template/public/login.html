@@ -1,4 +1,4 @@
-<div class="login-page">
+<div class="login-page" ng-controller="registerSigninController">
 	<div class="title-info wow fadeInUp animated animated"
 		data-wow-delay=".5s"
 		style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
@@ -13,18 +13,36 @@
 			data-wow-delay=".7s"
 			style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
 			<h4>
-				Welcome back to Modern Shoppe ! <br> Not a Member? <a
-					href="register.html"> Register Now »</a>
+				Welcome back to Online Touch ! <br> Not a Member? <a
+					ui-sref="register"> Register Now »</a>
 			</h4>
 		</div>
 		<div class="login-body wow fadeInUp animated animated"
 			data-wow-delay=".7s"
 			style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
-			<form>
-				<input type="text" class="user" name="email"
-					placeholder="Enter your email" required=""> <input
-					type="password" name="password" class="lock" placeholder="Password">
-				<input type="submit" name="Sign In" value="Sign In">
+			<div class="alert alert-danger" ng-show="error">
+    			There was a problem logging in. Please try again.
+			</div>
+			<form class="form-horizontal" role="form" name="loginForm"
+				ng-submit="login()" novalidate>
+				<input type="text" class="form-control" id="username"
+					name="username" placeholder="Enter User Name"
+					ng-model="credentials.username" required>
+				<span
+					ng-show="loginForm.username.$error.required && !loginForm.username.$pristine"
+					class="help-block">
+					User name is required.
+				</span>
+				<input
+					class="form-control" id="password"
+					name="password" placeholder="Enter password"
+					ng-model="credentials.password" required>
+				<span
+					ng-show="loginForm.password.$error.required && !loginForm.password.$pristine"
+					class="help-block">password is required.
+				</span>
+				<span class= "help-block"></span>
+				<button type="submit" class="btn btn-primary">Submit</button>
 				<div class="forgot-grid">
 					<label class="checkbox"><input type="checkbox"
 						name="checkbox"><i></i>Remember me</label>

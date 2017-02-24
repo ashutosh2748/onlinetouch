@@ -1,5 +1,16 @@
 'use strict';
-
+angular.module('myApp')
+.factory('AuthInterceptor', [function() {  
+    return {
+    // Send the Authorization header with each request
+        'request': function(config) {
+            config.headers = config.headers || {};
+            var encodedString = btoa("bill:abc123");
+            config.headers.Authorization = 'Basic '+encodedString;
+           return config;
+        }
+    };
+}]);
 var test = angular.module('onlineTouch')
         .constant("baseURL","http://localhost:8080/")
         .service('productFactory', ['$resource', 'baseURL', function($resource,baseURL) {
