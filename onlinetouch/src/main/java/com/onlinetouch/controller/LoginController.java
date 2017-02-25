@@ -31,7 +31,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResponseEntity<String> login(@Valid @RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout, Model model, Authentication authentication) {
-		
+		System.out.println("login posted");
 		String message = determineTargetUrl(authentication);
 		if(message != null){
 			model.addAttribute("redirectView", message);

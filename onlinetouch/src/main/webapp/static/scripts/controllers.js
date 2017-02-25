@@ -156,10 +156,9 @@ angular.module('b',[])
 
 		  }
 
-		  authenticate();
+//		  authenticate();
 		  $scope.credentials = {};
 
-		  $scope.credentials = {};
 		 /* $scope.login = function() {
 		      authenticate($scope.credentials, function() {
 		    	  console.log("Hi");
@@ -174,16 +173,18 @@ angular.module('b',[])
 		  };*/
 		  $scope.login = function() {
 			    var data = {
-			        username: $scope.username,
-			        password: $scope.password
+			        username: $scope.credentials.username,
+			        password: $scope.credentials.password
 			    };
-
+			    console.log(data);
 			    var successCallBack = function(response){
-			        // success response found from server
+			    	$location.path("/inventory");
+			          $scope.error = false;
 			    };
 
 			    var errorCallBack = function(response){
-			        // error response found from server
+			          $scope.error = true;
+			          console.log(response.data);
 			    };
 
 			    $http.post('http://localhost:8080/login', data).then(successCallBack, errorCallBack);
