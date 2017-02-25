@@ -64,7 +64,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
 			.antMatchers("/", "/home", "/welcome").permitAll()
-			.antMatchers("/login", "/admin", "/inventory", "/customer").anonymous()
+//			.anyRequest().authenticated()
+			//.antMatchers("/login", "/admin", "/inventory", "/customer").anonymous()
 			.antMatchers("/admin", "/admin/**").access("hasRole('ROLE_ADMIN')")
 			.antMatchers("/inventory", "/inventory/**").access("hasRole('ROLE_INVENTORY_MANAGER')")
 			.antMatchers("/customer", "/customer/**").access("hasRole('ROLE_CUSTOMER')")
@@ -79,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 			.exceptionHandling().accessDeniedPage("/Access_Denied")
 		.and()
-			.csrf();
+			.csrf().disable();
 	}
 	
 //	@Autowired

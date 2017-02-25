@@ -9,6 +9,9 @@
 					Welcome to Online Touch <a ui-sref="register">Register </a> Or <a
 						ui-sref="login">Sign In </a>
 				</p>
+				<p ng-show = "authenticated">
+					<a ng-click="logout()">logout</a>
+				</p>
 			</div>
 			<div
 				class="nav navbar-nav navbar-right social-icons wow fadeInRight animated"

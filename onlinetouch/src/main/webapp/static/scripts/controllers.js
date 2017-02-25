@@ -141,9 +141,10 @@ angular.module('b',[])
 		        + btoa(credentials.username + ":" + credentials.password)
 		    } : {};
 
-		    $http.get('user', {headers : headers}).then(function(response) {
+		    $http.post('login', {headers : headers}).then(function(response) {
 		      if (response.data.name) {
 		        $rootScope.authenticated = true;
+		        console.log(response.data);
 		      } else {
 		        $rootScope.authenticated = false;
 		      }
@@ -159,17 +160,34 @@ angular.module('b',[])
 		  $scope.credentials = {};
 
 		  $scope.credentials = {};
-		  $scope.login = function() {
+		 /* $scope.login = function() {
 		      authenticate($scope.credentials, function() {
+		    	  console.log("Hi");
 		        if ($rootScope.authenticated) {
-		          $location.path("/");
+		          $location.path("/inventory");
 		          $scope.error = false;
 		        } else {
 		          $location.path("/login");
 		          $scope.error = true;
 		        }
 		      });
-		  };
+		  };*/
+		  $scope.login = function() {
+			    var data = {
+			        username: $scope.username,
+			        password: $scope.password
+			    };
+
+			    var successCallBack = function(response){
+			        // success response found from server
+			    };
+
+			    var errorCallBack = function(response){
+			        // error response found from server
+			    };
+
+			    $http.post('http://localhost:8080/login', data).then(successCallBack, errorCallBack);
+			}
   }])
 
   
