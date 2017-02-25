@@ -36,7 +36,7 @@ angular.module('onlineTouch', ['ui.router', 'ngResource', 'b'])
                 views: {
                     'content@': {
                         templateUrl : '../template/public/register.html',
-                        controller  : 'IndexController'                  
+                        controller  : 'registerSigninController'                  
                     }
                 }
             })
@@ -45,7 +45,7 @@ angular.module('onlineTouch', ['ui.router', 'ngResource', 'b'])
             	views:{
             		'content@': {
             			templateUrl: '../template/public/login.html',
-            			controller : 'IndexController'
+            			controller : 'registerSigninController'
             		}
             	}
             })
