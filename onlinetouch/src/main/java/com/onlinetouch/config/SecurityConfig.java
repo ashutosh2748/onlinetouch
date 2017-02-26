@@ -2,8 +2,10 @@ package com.onlinetouch.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,13 +14,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.onlinetouch.security.MyAuthenticationSuccessHandler;
+import com.onlinetouch.security.RESTAuthenticationEntryPoint;
+import com.onlinetouch.security.RESTAuthenticationFailureHandler;
+import com.onlinetouch.security.RESTAuthenticationSuccessHandler;
 import com.onlinetouch.users.service.impl.WebUserServiceImpl;
 
 @Configuration
 @EnableWebSecurity
+@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	//@Autowired private DataSource dataSource;
@@ -27,6 +36,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	@Qualifier("userServiceImpl")// by name
 	UserDetailsService userDetailsService;
+	
+	@Autowired
+    private RESTAuthenticationEntryPoint authenticationEntryPoint;
+	
+	@Autowired
+    private RESTAuthenticationFailureHandler authenticationFailureHandler;
+	
+	@Autowired
+    private RESTAuthenticationSuccessHandler authenticationSuccessHandler;
 	
 	@Autowired
 	MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
@@ -72,15 +90,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 			.formLogin()
 			.loginPage("/login")
-			.successHandler(myAuthenticationSuccessHandler)
-			.failureUrl("/login?error")
+			.usernameParameter("username")
+		    .passwordParameter("password")
+			//.successHandler(myAuthenticationSuccessHandler)
+		    .successHandler(authenticationSuccessHandler)
+		    .failureHandler(authenticationFailureHandler)
+			//.failureUrl("/login?error")
 		.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/login?logout")
 		.and()
-			.exceptionHandling().accessDeniedPage("/Access_Denied")
+			.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
 		.and()
-			.csrf().disable();
+			.exceptionHandling().accessDeniedPage("/Access_Denied")
+		
+		.and()
+			.csrf().csrfTokenRepository(csrfTokenRepository()).and()
+		      .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class);
+	}
+	
+	private CsrfTokenRepository csrfTokenRepository() {
+	  HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+	  repository.setHeaderName("X-XSRF-TOKEN");
+	  return repository;
 	}
 	
 //	@Autowired

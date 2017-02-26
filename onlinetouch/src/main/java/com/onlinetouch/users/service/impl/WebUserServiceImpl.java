@@ -25,10 +25,11 @@ public class WebUserServiceImpl implements WebUserService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		System.out.println("username in webuserserviceImpl: "+username);
 		try {
 			WebUser user = webUserRepository.findByUserName(username);
 			if (user == null) {
-				return null;
+				throw new UsernameNotFoundException("User not found");//return null;
 			}
 			return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(),
 					getAuthorities(user));

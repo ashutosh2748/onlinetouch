@@ -30,7 +30,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 			throws IOException {
 
 		String targetUrl = determineTargetUrl(authentication);
-
+		System.out.println("i am at MyAuthentcationSuccessHandler: "+targetUrl);
 		if (response.isCommitted()) {
 			//Response has already been committed. Unable to redirect to " + targetUrl
 			return;

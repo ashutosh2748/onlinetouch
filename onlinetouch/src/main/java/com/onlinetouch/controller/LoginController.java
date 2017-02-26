@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,12 +29,11 @@ public class LoginController {
 		return user;
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<String> login(@Valid @RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout, Model model, Authentication authentication) {
-		
+	@RequestMapping(value = "/login", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> login(Model model, Authentication authentication) {
+		System.out.println("AAAAAAA");
 		String message = determineTargetUrl(authentication);
-		if(message != null){
+		if(message != null){ 
 			model.addAttribute("redirectView", message);
 			return new ResponseEntity<String>("user", HttpStatus.OK);
 		}
