@@ -134,14 +134,27 @@ angular.module('b',[])
 
   }])
   
-  .controller('registerSigninController', ['$scope','$rootScope','$http','$location', function ($scope,$rootScope, $http, $location) {
+  .controller('registerSigninController', ['$scope','$rootScope','$http','$location',
+	  function ($scope,$rootScope, $http, $location) {
+	  //$scope.login = registrationLoginFactory.getAuth(); 
+		  
 	  var authenticate = function(credentials, callback) {
 
-		    var headers = credentials ? {authorization : "Basic "
-		        + btoa(credentials.username + ":" + credentials.password)
-		    } : {};
+//		    var headers = credentials ? {authorization : "Basic "
+//		        + btoa(credentials.username + ":" + credentials.password)
+//		    } : {};
+//		    
+		    var data = $.param({
+        		username: credentials.username,
+        		password: credentials.password
+            });
+        	var config = {
+                    headers : {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                    }
+                }
 
-		    $http.post('login', {headers : headers}).then(function(response) {
+		    $http.post('login', data, config).then(function(response) {
 		      if (response.data.name) {
 		        $rootScope.authenticated = true;
 		        console.log(response.data);
@@ -157,9 +170,9 @@ angular.module('b',[])
 		  }
 
 //		  authenticate();
-		  $scope.credentials = {};
+//		  $scope.credentials = {};
 
-		 /* $scope.login = function() {
+		  $scope.login = function() {
 		      authenticate($scope.credentials, function() {
 		    	  console.log("Hi");
 		        if ($rootScope.authenticated) {
@@ -170,25 +183,7 @@ angular.module('b',[])
 		          $scope.error = true;
 		        }
 		      });
-		  };*/
-		  $scope.login = function() {
-			    var data = {
-			        username: $scope.credentials.username,
-			        password: $scope.credentials.password
-			    };
-			    console.log(data);
-			    var successCallBack = function(response){
-			    	$location.path("/inventory");
-			          $scope.error = false;
-			    };
-
-			    var errorCallBack = function(response){
-			          $scope.error = true;
-			          console.log(response.data);
-			    };
-
-			    $http.post('http://localhost:8080/login', data).then(successCallBack, errorCallBack);
-			}
+		  };
   }])
 
   
